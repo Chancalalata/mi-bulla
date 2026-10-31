@@ -1,87 +1,58 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+const audio = document.querySelector('.audio-element');
+const songTitle = document.getElementById('song-title');
+const songArtist = document.getElementById('song-artist');
+const currentTitle = document.getElementById('current-title');
+const currentArtist = document.getElementById('current-artist');
+const playlistItems = document.querySelectorAll('.song-list li');
+
+// Lista de canciones conectada a la interfaz
+const songs = [
+    {
+        title: "SoundHelix Song 1",
+        artist: "Demo Artista 1",
+        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
+        title: "SoundHelix Song 2",
+        artist: "Demo Artista 2",
+        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    },
+    {
+        title: "SoundHelix Song 3",
+        artist: "Demo Artista 3",
+        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    }
+];
+
+function loadSong(index) {
+    const song = songs[index];
+    
+    // Actualiza textos en la tarjeta y en la barra inferior
+    songTitle.textContent = song.title;
+    songArtist.textContent = song.artist;
+    currentTitle.textContent = song.title;
+    currentArtist.textContent = song.artist;
+    
+    // Actualiza la fuente de audio
+    audio.src = song.src;
+    
+    // Cambia el estilo activo en la lista de canciones
+    playlistItems.forEach((item, i) => {
+        if (i === index) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
 }
 
-body {
-    background-color: #0f0f13;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+// Evento de clic en cada pista de la lista
+playlistItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        loadSong(index);
+        audio.play(); // Inicia reproducción al hacer clic
+    });
+});
 
-.player-container {
-    background: rgba(25, 25, 35, 0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 20px;
-    width: 350px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    text-align: center;
-}
-
-.album-art {
-    width: 150px;
-    height: 150px;
-    background: linear-gradient(135deg, #6366f1, #a855f7);
-    border-radius: 15px;
-    margin: 0 auto 20px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
-    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
-}
-
-.song-info h1 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.song-info p {
-    font-size: 0.9rem;
-    color: #94a3b8;
-    margin-bottom: 20px;
-}
-
-.audio-element {
-    width: 100%;
-    margin-bottom: 25px;
-    accent-color: #6366f1;
-}
-
-.playlist {
-    text-align: left;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 15px;
-}
-
-.playlist h3 {
-    font-size: 0.9rem;
-    color: #94a3b8;
-    margin-bottom: 10px;
-}
-
-.playlist ul {
-    list-style: none;
-    max-height: 120px;
-    overflow-y: auto;
-}
-
-.playlist li {
-    padding: 8px 10px;
-    font-size: 0.9rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.playlist li:hover, .playlist li.active {
-    background: rgba(99, 102, 241, 0.2);
-    color: #818cf8;
-}
+// Cargar la primera canción por defecto al abrir la página
+loadSong(0);

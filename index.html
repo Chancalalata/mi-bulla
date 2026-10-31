@@ -3,36 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Reproductor Web</title>
+    <title>Apple Music - Web Player</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="player-container">
-        <!-- Portada y Título -->
-        <div class="song-info">
-            <div class="album-art">🎵</div>
-            <h1>Título de la Canción</h1>
-            <p>Artista / Álbum</p>
-        </div>
+    <div class="app-container">
+        <!-- Barra lateral estilo Apple Music -->
+        <aside class="sidebar">
+            <div class="logo"> <span>Music</span></div>
+            <nav>
+                <ul>
+                    <li class="active">Escuchar ahora</li>
+                    <li>Explorar</li>
+                    <li>Radio</li>
+                    <li>Biblioteca</li>
+                </ul>
+            </nav>
+        </aside>
 
-        <!-- Reproductor de audio nativo -->
-        <audio controls class="audio-element">
-            <!-- Aquí puedes poner la ruta de un archivo de audio o un enlace directo -->
-            <source src="" type="audio/mp3">
-            Tu navegador no soporta el elemento de audio.
-        </audio>
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>Biblioteca Personal</h1>
+            </header>
+            
+            <div class="content-body">
+                <!-- Tarjeta de Reproducción con Efecto Glass -->
+                <div class="album-card">
+                    <div class="artwork">🎵</div>
+                    <div class="track-details">
+                        <h2 id="song-title">Selecciona una canción</h2>
+                        <p id="song-artist">Artista</p>
+                    </div>
+                </div>
 
-        <!-- Lista de reproducción simulada -->
-        <div class="playlist">
-            <h3>Tu Lista</h3>
-            <ul>
-                <li class="active"><span>1.</span> Canción de ejemplo 1</li>
-                <li><span>2.</span> Canción de ejemplo 2</li>
-                <li><span>3.</span> Canción de ejemplo 3</li>
-            </ul>
-        </div>
+                <!-- Lista de reproducción lateral -->
+                <div class="playlist-section">
+                    <h3>Tus Pistas Disponibles</h3>
+                    <ul class="song-list">
+                        <li data-index="0"><span>1.</span> SoundHelix Song 1</li>
+                        <li data-index="1"><span>2.</span> SoundHelix Song 2</li>
+                        <li data-index="2"><span>3.</span> SoundHelix Song 3</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
     </div>
 
+    <!-- Barra de reproducción flotante con Liquid Glass -->
+    <div class="glass-player">
+        <div class="player-info">
+            <span id="current-title">SoundHelix Song 1</span>
+            <span id="current-artist" class="sub">Demo Artista 1</span>
+        </div>
+        <audio controls class="audio-element"></audio>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
