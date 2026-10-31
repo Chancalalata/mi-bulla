@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Reproductor Web</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="player-container">
+        <!-- Portada y Título -->
+        <div class="song-info">
+            <div class="album-art">🎵</div>
+            <h1>Título de la Canción</h1>
+            <p>Artista / Álbum</p>
+        </div>
+
+        <!-- Reproductor de audio nativo -->
+        <audio controls class="audio-element">
+            <!-- Aquí puedes poner la ruta de un archivo de audio o un enlace directo -->
+            <source src="" type="audio/mp3">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+
+        <!-- Lista de reproducción simulada -->
+        <div class="playlist">
+            <h3>Tu Lista</h3>
+            <ul>
+                <li class="active"><span>1.</span> Canción de ejemplo 1</li>
+                <li><span>2.</span> Canción de ejemplo 2</li>
+                <li><span>3.</span> Canción de ejemplo 3</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
